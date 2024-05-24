@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Car</title>
+</head>
+<style>
+    *{
+        font-family: 'poppins',sans-serif;
+        margin: 0;
+        padding: 0;
+        scroll-padding-top: 1rem;
+        scroll-behavior: smooth;
+        list-style: none;
+        text-decoration: none;
+        box-sizing: border-box;
+    }
+    :root{
+        --main-color:#d90429;
+        --text-color:#020102;
+        --bg-color:#fff;
+    }
+    img{
+        width: 100%;
+    }
+    body{
+
+
+    }
+    .container{
+        max-width: 1068px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    header{
+        display: block;
+        width: 100%;
+        position: relative;
+        top: 0;
+        left: 0;
+        z-index: 100;
+    }
+    .nav {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 20px 35px;
+
+    }
+    #menu-icon{
+        font-size: 24px;
+        cursor: pointer;
+        color: aqua;
+        display: none;
+    }
+    .logo{
+        font-size: 1.2rem;
+        font-weight: 700;
+        color: black;
+        
+    }
+    .logo span{
+        color: #d90429;
+    }
+    .navbar{
+        display: flex;
+        column-gap: 2rem;
+
+    }
+    .navbar a{
+        color: black;
+        font-size: 1rem;
+        text-transform: uppercase;
+        font-weight: 500;
+
+    }
+    .navbar a:hover,.navbar .active{
+        color: #d90429;
+        border-bottom: 3px solid #d90429;
+    }
+    #search-icon{
+        font-size: 24px;
+        cursor: pointer;
+        
+    }
+    .search-box{
+        position: absolute;
+        top: 110%;
+        right: 0;
+        left: 0;
+        background: white
+        box-shadow: 4px 4px 20px rgb(15 54 55/101%);
+        border: 1px solid #d90429;
+        border-radius: 0.5rem;
+
+
+
+    }
+    .search-box input{
+        width: 100%;
+        padding: 20px;
+        border: none;
+        outline: none;
+        background: transparent;
+        font-size: 1rem;
+
+    }
+    .home{
+        max-width: 1300px;
+        margin: auto;
+        width: 100%;
+        min-height: 640px;
+        display: flex;
+        align-items: center;
+        background: url(car3.png);
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center left;
+        
+
+    }
+    .home-text{
+        padding-left: 1px;
+    }
+    .home-text h1{
+        font-size: 2.2rem;
+
+    }
+    .home-text span{
+        color: #d90429;
+    }
+    .btn{
+        padding: 10px 22px;
+        background: #d90429;
+        color:whitesmoke;
+        font-weight: 400;
+    }
+    .heading{
+        text-align: center;
+
+    }
+    .heading span{
+        font-weight: 500;
+        color: #d90429;
+    }
+    .cars-container{
+        display: flex;
+        flex-wrap: wrap;
+        gap: 2rem;
+        margin-top: 2rem;
+
+    }
+    .cars-container .box{
+        flex: 1 1 17rem;
+        position: relative;
+        height: 200px;
+        border-radius: 0.5rem;
+        overflow: hidden;
+
+    }
+    .cars-container .box img{
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        overflow: hidden;
+
+    }
+    .cars-container  .box  img:hover{
+        transform: scale(1.1);
+        transition: 0.5s;
+    }
+    .cars-container .box h2{
+        position: absolute;
+        bottom: 1rem;
+        left: 1rem;
+        font-weight: 400;
+        font-size: 1rem;
+        background: whitesmoke;
+        padding: 8px;
+        border-radius: 0.5rem;
+
+
+    }
+    .cars-container .box:hover h2{
+        background:white ;
+        color: #d90429;
+
+    }
+    .about{
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: 1.5rem;
+
+    }
+    .about-img{
+        flex: 1 1 21rem;
+        border-radius: 4px;
+
+    }
+    .about-text{
+        flex: 1 1 21rem;
+
+    }
+    .about span{
+        font-weight: 500;
+        color: #d90429;
+
+    }
+    .about-text h2{
+        font-size: 1.7rem;
+        
+    }
+    .partcar{
+    
+        text-align: center;
+        text-decoration: underline;
+
+        
+    }
+    .parts-container{
+        display: flex;
+        flex-wrap: wrap;
+        gap: 2rem;
+        margin-top: 2rem;
+
+    }
+    .parts-container .box{
+        flex: 1 1 17rem;
+        position: relative;
+        padding: 20px;
+        display: flex;
+        flex-direction: column;
+        background: #f6f6f6;
+        border-radius: 0.5rem;
+
+    }
+    .parts-container .box img{
+        width: 100%;
+        height:150px ;
+        object-fit: contain;
+        object-position: center;
+        margin-bottom: 1rem;
+        display: flex;
+
+    }
+     
+        
+
+
+    
+    .parts-container .box span{
+        font-size: 1.1rem;
+        font-weight: 600;
+        color: #d90429;
+        text-align: center;
+
+    }
+    .parts-container .box .btn{
+        max-width: 120px;
+    }
+    .parts-container .box .details{
+        display:flex;
+        align-items: center;
+        position: absolute;
+        bottom: 1.8rem;
+        right: 1rem;
+        font-size: 1rem;
+        color: #d90429;
+    }
+    .parts-container  .box .details:hover{
+        text-decoration: underline;
+    }
+   
+    .footer{
+        background: #020102;
+        color: #f6f6f6;
+        border-top: 2px solid #d90429;
+    }
+    .footer-container{
+        display: flex;
+        justify-content: space-between;
+        gap: 1rem;
+
+
+    }
+    .footer-container .logo{
+        color: #f6f6f6;
+        margin-bottom: 1rem;
+
+    }
+    .footer-container .footer-box{
+        display: flex;
+        flex-direction: column;
+    }
+    .social  a{
+        font-size: 24px;
+        color: #f6f6f6;
+        margin-right: 1rem;
+
+
+    }
+    .social a:hover{
+        color: #d90429;
+    }
+    .footer-boxh3{
+        font-size: 1.1rem;
+        font-weight: 400;
+        margin-bottom: 1rem;
+    }
+    .footer-box a{
+        color: gray;
+        margin-bottom: 10px;
+
+    }
+    .footer-box a:hover{
+        color: #f6f6f6;
+    }
+
+
+
+</style>
+<body>
+    <header>
+        <div class="nav container">
+            <i class='bx bx-menu' id="menu-icon"></i>
+
+            <a href="#" class="logo">WHEELS <span>&DEALS</span></a>
+
+            <ul class="navbar">
+                <li><a href="#Home" class="active">Home</a></li>
+                <li><a href="#cars">Cars</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="tools">Tools</a></li>
+
+
+            </ul>
+
+           
+            <div class="search-box">
+                <input type="search" name="" id="search-icon" placeholder="Search Here...">
+            </div>
+        </div>
+
+
+    </header>
+    <section class="home" id="home">
+        <div class="home-text">
+            <h1>We Have Everything <br> Your <span> CAR</span> Need</h1>
+            <br>
+            <a href="#" class="btn"> Discover Now</a>
+        </div>
+    </section>
+    <section class="cars" id="cars">
+        <div class="heading">
+            <span>ALL CARS</span>
+            <h2>WE HAVE ALL TYPES OF CARS</h2>
+        </div>
+        <div class="cars-container container">
+            <div class="box">
+                <img src="hyundai.webp" alt="">
+                <h2>Hyundai</h2>
+            </div>
+            <div class="box">
+                <img src="tata2.webp" alt="">
+                <h2>TATA</h2>
+            </div>
+            <div class="box">
+                <img src="mahindra.jpeg" alt="">
+                <h2>Mahindra</h2>
+            </div>
+            <div class="box">
+                <img src="ford2.jpg" alt="">
+                <h2>Ford</h2>
+            </div>
+            <div class="box">
+                <img src="renault.jpg" alt="">
+                <h2>Renault</h2>
+               
+            </div>
+            <div class="box">
+                <img src="volkswagen.jpeg" alt="">
+                <h2>Volkswagen</h2>
+            </div>
+        </div>
+    </section>
+    <br>  
+    <br> 
+    <section class="about container" id="about">
+        <div class="about-img">
+            <img src="car3.jpg" alt="">
+        </div>
+       
+        <dic class="about-text">
+            <h2 >Cheap prices with <br> Quality Cars</h2>
+            <br>
+            <a href="#" class="btn">Learn More</a>
+        </dic>
+    </section>
+    <br>
+  
+    <section class="parts" id="parts">
+        <h3 class="partcar">SPARE PARTS</h3>
+        
+        
+        <div class="parts-container container">
+            
+            
+            
+            <div class="box">
+                
+                <img src="part1.png" alt="">
+                <span>Rs 2000</span>
+                <a href="#" class="btn">Buy Now</a>
+                <a href="#" class="details">View Details</a>
+            </div>
+
+            <div class="box">
+                
+                <img src="part2.png" alt="">
+                <span>Rs 2200</span>
+                <a href="#" class="btn">Buy Now</a>
+                <a href="#" class="details">View Details</a>
+            </div>
+
+             <div class="box">
+                
+                <img src="part3.png" alt="">
+                <span>Rs 4999</span>
+                <a href="#" class="btn">Buy Now</a>
+                <a href="#" class="details">View Details</a>
+            </div>
+     
+       
+            <div class="box">
+                
+                <img src="part4.png" alt="">
+                <span>Rs  1899</span>
+                <a href="#" class="btn">Buy Now</a>
+                <a href="#" class="details">View Details</a>
+            </div>
+        
+        
+            <div class="box">
+                
+                <img src="part5.png" alt="">
+                <span>Rs 3000</span>
+                <a href="#" class="btn">Buy Now</a>
+                <a href="#" class="details">View Details</a>
+            </div>
+       
+       
+            <div class="box">
+                
+                <img src="part6.png" alt="">
+                <span>Rs 2500</span>
+                <a href="#" class="btn">Buy Now</a>
+                <a href="#" class="details">View Details</a>
+            </div>
+        </div>
+    </section>
+   <section class="footer">
+    <div class="footer-container container">
+       <div class="footer-box">
+        <a href="#" class="logo">Wheels <span> &Deals</span></a>
+        <div class="social">
+            <a href="#"><i class='bx bxl-facebook'></i></a>
+            <a href="#"><i class='bx bxl-twitter'></i></a>
+            <a href="#"><i class='bx bxl-instagram'></i></a>
+            <a href="#"><i class='bx bxl-youtube'></i></a>
+
+        </div>
+       </div>
+     
+       <div class="footer-box">
+        <h3>Page</h3>
+        <a href="#">Home</a>
+        <a href="#">Cars</a>
+        <a href="#">Parts</a>
+        <a href="#">Sales</a>
+
+       </div>
+       <div class="footer-box">
+        <h3>Legal</h3>
+        <a href="#">Privacy</a>
+        <a href="#">Refund</a>
+        <a href="#">Cookie Policy</a>
+        
+
+       </div>
+       <div class="footer-box">
+        <h3>Contact</h3>
+        <span>India</span>
+        <span>Canada</span>
+        <span>USA</span>
+
+       </div>
+
+       </div> 
+   </section>
+    
+</body>
+
+</html>
